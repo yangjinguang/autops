@@ -1,0 +1,71 @@
+<div class="main-body">
+    <!--Device.view-->
+    <div class="main-content content-device">
+        <div class="device-header">
+            <ul>
+                <li>
+                    <button class="btn btn-default" ng-click="addGroup()">新建分组</button>
+                    <button class="btn btn-default" ng-click="getGroup()">get</button>
+                </li>
+            </ul>
+        </div>
+        <div gridster="gridsterData.gridsterOpts">
+            <ul>
+                <li gridster-item="gridsterData.customItemMap"
+                    ng-style="{'z-index':(item.position[0]+1)}"
+                    ng-repeat="item in deviceGroups">
+                    <div class="device-group">
+                        <div class="device-group-title">
+                            <div class="name device-group-drag">
+                                <span bs-tooltip="{title:item.name}">{{item.name}}</span>
+                                <i class="edit iconfont icon-bianji1"
+                                   bs-tooltip="{title:'重命名'}"
+                                   ng-click="addGroup(item)"></i>
+                            </div>
+                            <div class="option">
+                                <!--<i class="iconfont icon-jia pointer" ng-click="deviceAdd(item)"></i>-->
+                                <button class="iconfont icon-shezhi pointer no-type"
+                                        data-trigger="focus"
+                                        data-placement="left-bottom"
+                                        data-animation="am-flip-x"
+                                        data-template="app/device/template/device.group.op.template.html"
+                                        bs-popover></button>
+                            </div>
+                        </div>
+                        <div class="device-group-list">
+                            <ul>
+                                <li ng-repeat="device in item.children">
+                                    <div class="device-type">
+                                        <i class="iconfont icon-path3"
+                                           bs-tooltip="{title:deviceTypes[device.type].displayName}"></i>
+                                    </div>
+
+                                    <div class="device-name">
+                                        <!--<span class="device-name-1">{{device.name}}</span>-->
+                                        <span class="device-name-2">{{device.displayName}}</span>
+                                    </div>
+
+                                    <div class="device-status"
+                                         ng-class="{0:'success',1:'error',2:'warning'}[device.status]">
+                                    </div>
+                                    <div class="device-op">
+                                        <div class="device-op-info">
+                                            <i class="iconfont icon-liebiao1 pointer"
+                                               bs-tooltip="{title:'详情'}"
+                                               ng-click="deviceInfo(device)"></i>
+                                        </div>
+                                        <div class="device-op-terminal">
+                                            <i class="iconfont icon-zhongduan pointer"
+                                               bs-tooltip="{title:'终端'}"></i>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

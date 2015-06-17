@@ -1,0 +1,41 @@
+.left-side-list {
+    padding: 20px 0 0;
+    list-style: none;
+}
+
+.left-side-item a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    color: #ffffff;
+    text-align: left;
+    cursor: pointer;
+    padding: 10px 10px 10px 15px;
+}
+.left-side-item .iconfont {
+    margin: 0 4px;
+}
+
+.left-side-item a:hover {
+    text-decoration: none;
+}
+
+.left-side-item.active {
+    background-color: #1a1a1f;
+}
+
+.left-side-item:hover {
+    background-color: #1a1a1f;
+}
+.left-side-footer {
+    position: absolute;
+    bottom: 0;
+}
+.left-side-footer .logout {
+    padding: 20px 34px;
+    color: #ffffff;
+}
+.left-side-footer .iconfont {
+    font-size: 30px;
+    cursor: pointer;
+}

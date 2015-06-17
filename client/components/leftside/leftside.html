@@ -1,0 +1,26 @@
+<div class="left-side">
+    <ul class="left-side-list">
+        <li class="left-side-item"
+            ng-class="{true:'active'}[isActive('dashboard')]">
+            <a href="/dashboard"><i class="iconfont icon-yibiao"></i>仪表盘</a>
+        </li>
+        <li class="left-side-item"
+            ng-class="{true:'active'}[isActive('device')]">
+            <a href="/device"><i class="iconfont icon-path3"></i>设备</a>
+        </li>
+        <li class="left-side-item"
+            ng-class="{true:'active'}[isActive('service')]">
+            <a href="/service"><i class="iconfont icon-yingyong"></i>服务</a>
+        </li>
+        <li class="left-side-item"
+            ng-class="{true:'active'}[isActive('monitor')]">
+            <a href="/monitor"><i class="iconfont icon-iconfontjiankongjiance"></i>监控</a>
+        </li>
+    </ul>
+    <div class="left-side-footer">
+        <div class="logout">
+            <i class="iconfont icon-tuichu" ng-click="logout()"></i>
+            退出
+        </div>
+    </div>
+</div>
