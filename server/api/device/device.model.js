@@ -5,10 +5,11 @@ var mongoose = require('mongoose'),
 
 var DeviceSchema = new Schema({
     name: String,
-    displayName:String,
-    ip:String,
-    type: Number,
-    status: Number
+    displayName: String,
+    ip: String,
+    type: String,
+    status: Number,
+    info: String
 });
 
 module.exports = mongoose.model('Device', DeviceSchema);

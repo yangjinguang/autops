@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('autopsApp')
-    .factory('deviceGroup', function ($resource) {
+    .factory('DeviceGroup', function ($resource) {
         return $resource('/api/device/group/:id', {
                 id: '@_id'
             },
@@ -34,4 +34,33 @@ angular.module('autopsApp')
                     }
                 }
             });
-    });
+    })
+    .factory('Device', function ($resource) {
+        return $resource('/api/device/:id', {
+                id: '@_id'
+            },
+            {
+                create: {
+                    method: 'POST'
+                },
+                getAll: {
+                    method: 'GET',
+                    isArray: true
+                },
+                get:{
+                    method: 'GET'
+                },
+                update: {
+                    method: 'PUT',
+                    params:{
+                        id:'@id'
+                    }
+                },
+                delete:{
+                    method: 'DELETE',
+                    params:{
+                        id:'@id'
+                    }
+                }
+            });
+    });;

@@ -15,12 +15,12 @@ var DeviceGroup = require('./device.group.model');
 
 // Get list of things
 exports.index = function (req, res) {
-    Device.find(function (err, things) {
-        console.log(Device);
+    Device.find(function (err, device) {
+        console.log(device);
         if (err) {
             return handleError(res, err);
         }
-        return res.json(200, things);
+        return res.json(200, device);
     });
 };
 
@@ -39,11 +39,12 @@ exports.show = function (req, res) {
 
 // Creates a new thing in the DB.
 exports.create = function (req, res) {
-    Device.create(req.body, function (err, thing) {
+    Device.create(req.body, function (err, device) {
+        console.log(req.body)
         if (err) {
             return handleError(res, err);
         }
-        return res.json(201, thing);
+        return res.json(201, device);
     });
 };
 

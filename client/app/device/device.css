@@ -159,3 +159,6 @@
 .top-index {
     z-index: 999 !important;
 }
+.aside-device-add {
+    min-width: 500px;
+}

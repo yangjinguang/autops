@@ -1,29 +1,38 @@
 'use strict';
 
 angular.module('autopsApp')
-    .controller('DeviceViewCtrl', function ($scope, $timeout, $http, socket, $aside, $modal, deviceGroup, WarningBox) {
+    .controller('DeviceViewCtrl', function ($scope, $timeout, $http, socket, $aside, $modal, DeviceGroup, Device, WarningBox) {
 
         var dataInit = {
             allGroups: function () {
-                deviceGroup.getAll({}, function (res) {
-                    console.log(res);
+                DeviceGroup.getAll({}, function (res) {
+                    //console.log(res);
                     $scope.deviceGroups = res
                 }, function (error) {
                     console.log(error)
                 })
             },
             group: function (group) {
-                deviceGroup.get({id: group._id}, function (res) {
-                    console.log(res);
+                DeviceGroup.get({id: group._id}, function (res) {
+                    //console.log(res);
                     group = res
                 }, function (error) {
                     console.log(error)
                 })
+            },
+            allDevices: function () {
+                Device.getAll({}, function (res) {
+                    console.log(res);
+                    $scope.devices = res;
+                }), function (error) {
+                    console.log(error)
+                }
             }
         };
         dataInit.allGroups();
+        dataInit.allDevices();
         $scope.getGroup = function () {
-            deviceGroup.get({id: 'test'}, function (res) {
+            DeviceGroup.get({id: 'test'}, function (res) {
                 console.log(res);
                 return res;
             }, function (error) {
@@ -88,7 +97,7 @@ angular.module('autopsApp')
                         };
                         postData.push(tmp)
                     });
-                    deviceGroup.update(postData, function (res) {
+                    DeviceGroup.update(postData, function (res) {
 
                     })
                 } // optional callback fired when item is finished dragging
@@ -117,7 +126,7 @@ angular.module('autopsApp')
             modalScope.formData = item ? angular.copy(item) : {};
             modalScope.save = function () {
                 if (item) {
-                    deviceGroup.update({
+                    DeviceGroup.update({
                         id: item._id,
                         name: modalScope.formData.name
                     }, function (res) {
@@ -127,7 +136,7 @@ angular.module('autopsApp')
                         console.log(err)
                     })
                 } else {
-                    deviceGroup.create({}, {
+                    DeviceGroup.create({}, {
                         name: modalScope.formData.name
                     }, function (group) {
                         console.log(group);
@@ -141,7 +150,7 @@ angular.module('autopsApp')
         $scope.groupRm = function (group) {
             console.log(group)
             WarningBox("确定要删除此分组吗", function () {
-                deviceGroup.delete({id: group._id}, function (res) {
+                DeviceGroup.delete({id: group._id}, function (res) {
                     dataInit.allGroups();
                 }, function (err) {
                     console.log(err)
@@ -163,8 +172,13 @@ angular.module('autopsApp')
                 show: true
             });
             var scope = deviceAside.$scope;
+            scope.deviceTypes = $scope.deviceTypes;
             scope.type = 'add';
             scope.device = {};
+            scope.save = function () {
+                console.log(scope.device)
+                Device.create(scope.device)
+            }
         }
 
         $scope.customOpts = {
