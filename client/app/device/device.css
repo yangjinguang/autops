@@ -2,14 +2,17 @@
     height: 100%;
     overflow: auto;
 }
+
 .device-header {
     padding: 10px;
 }
+
 .device-header ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
+
 .device-group {
     width: 100%;
     height: 100%;
@@ -24,6 +27,7 @@
     text-align: center;
     border-bottom: 1px solid #e5e5e5;
 }
+
 .device-group-title .option {
     position: absolute;
     right: 10px;
@@ -55,13 +59,14 @@
     /*border: 1px solid transparent;*/
     /*border-radius: 4px;*/
 }
+
 .device-name .device-name-1 {
     display: block;
 }
+
 .device-name .device-name-2 {
     display: block;
 }
-
 
 .device-group-list li .device-status {
     position: absolute;
@@ -70,12 +75,15 @@
     top: 0;
     width: 2px;
 }
+
 .device-group-list li .device-status.success {
     background-color: #006600;
 }
+
 .device-group-list li .device-status.warning {
     background-color: #dfbe27;
 }
+
 .device-group-list li .device-status.error {
     background-color: #9c0d25;
 }
@@ -84,54 +92,70 @@
     float: right;
     /*padding: 9px;*/
 }
+
 .device-type {
     float: left;
     padding: 9px 0;
 }
+
 .device-op-info {
     float: left;
     padding: 9px;
 }
+
 .device-op-terminal {
     float: left;
     padding: 2px;
 }
+
 .device-op-terminal .iconfont {
     font-size: 25px;
 }
+
 .device-group-title .edit {
     position: absolute;
     padding-left: 10px;
     cursor: pointer;
     display: none;
 }
+
 .device-group-title:hover .edit {
     display: inline-block;
 }
+
 .device-group-oplist .popover-content {
     padding: 0;
 }
+
 .device-group-oplist ul {
     padding: 0;
     list-style: none;
 }
+
 .device-group-oplist ul li {
     padding: 5px 10px;
     cursor: pointer;
 }
+
 .device-group-oplist ul li:hover {
     background-color: #e5e5e5;
 }
+
 .device-group-title .name {
     position: relative;
     margin: auto;
     width: 170px;
     cursor: move;
 }
+
 .device-group-title .name span {
     display: inline-block;
     max-width: 120px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.top-index {
+    z-index: 999 !important;
 }

@@ -72,14 +72,15 @@ angular.module('autopsApp')
                 enabled: true,
                 handle: '.device-group-drag',
                 start: function (event, $element, widget) {
-                    debugger;
+                    $element.addClass('top-index');
                     //$element.css('zIndex', '99')
                 }, // optional callback fired when drag is started,
                 drag: function (event, $element, widget) {
                 }, // optional callback fired when item is moved,
                 stop: function (event, $element, widget) {
                     //$element.css('zIndex', curlCss/100)
-                    var postData = []
+                    $element.removeClass('top-index');
+                    var postData = [];
                     angular.forEach($scope.deviceGroups, function (item) {
                         var tmp = {
                             _id: item._id,
@@ -108,7 +109,7 @@ angular.module('autopsApp')
             var groupModal = $modal({
                 title: item ? '编辑分组' : '新建分组',
                 backdrop: 'static',
-                template: 'app/device/template/device.addgroup.template.html',
+                template: 'app/device/template/device.group.add.template.html',
                 show: true
             });
             var modalScope = groupModal.$scope;
@@ -158,7 +159,7 @@ angular.module('autopsApp')
                 container: 'body',
                 title: '设备添加',
                 backdrop: 'static',
-                template: 'app/device/template/device.info.template.html',
+                template: 'app/device/template/device.add.template.html',
                 show: true
             });
             var scope = deviceAside.$scope;
@@ -201,7 +202,7 @@ angular.module('autopsApp')
                 container: 'body',
                 title: '设备详情',
                 backdrop: 'static',
-                template: 'app/device/template/device.info.template.html',
+                template: 'app/device/template/device.add.template.html',
                 show: true
             });
             var scope = deviceAside.$scope;
